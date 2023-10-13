@@ -1,0 +1,118 @@
+body, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color:navajowhite;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+button {
+    transition: background-color 0.3s;
+}
+
+.openButton, .closeButton {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 15%;
+    margin-left: 10px;
+}
+.openButton {
+    background-color: green;
+}
+.closeButton {
+    background-color: red;
+}
+
+button:hover {
+    background-color: navajowhite;
+}
+
+.title {
+    flex-grow: 1;
+    font-size: 40px;
+}
+
+.board-tiles {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 20px;
+}
+
+.board-tile {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #000;
+    cursor: pointer;
+    margin: 10px;
+    overflow: hidden;
+    transition: border-color 0.3s, border-radius 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.board-tile img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
+.board-tile.clicked {
+    border-color: limegreen;
+    border-radius: 25%;
+}
+
+.game-pieces-selection {
+    padding: 20px;
+}
+
+.game-pieces {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 10px;
+}
+
+.game-piece-tile {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.3s, border-radius 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-piece-tile img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
+.game-piece-tile.clicked {
+    border-color: limegreen;
+    border-radius: 25%;
+}
