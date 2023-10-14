@@ -16,21 +16,44 @@ function openWin(selectedBoardNumber) {
   myWindow.document.body.style.backgroundRepeat = "no-repeat";
   myWindow.document.body.style.backgroundPosition = "center";
 
-  // Generate the HTML for selected game pieces and insert it into the opened window
+  // Generate the HTML for selected game pieces in a grid layout and insert it into the opened window
   const selectedPieces = document.querySelectorAll(".game-piece-tile.clicked");
-  const pieceHTML = Array.from(selectedPieces)
-    .map((piece, index) => {
-      return `<div style="position: absolute; top: ${100 * index}px; left: ${
-        100 * index
-      }px;">
-                <img src="${piece.querySelector("img").src}" alt="${
-        piece.querySelector("img").alt
-      }" style="width: 50px; height: 50px;"> <!-- Set the desired width and height -->
-              </div>`;
-    })
-    .join("");
+  let top = 0;
+  let left = 0;
+  const gridSpacing = 100; // Adjust the spacing between pieces
 
-  myWindow.document.body.innerHTML += pieceHTML;
+  selectedPieces.forEach((piece) => {
+    const pieceImage = piece.querySelector("img").src;
+    const pieceAlt = piece.querySelector("img").alt;
+    const quantity = getPieceQuantity(pieceAlt); // Get the quantity from the slider
+
+    for (let i = 0; i < quantity; i++) {
+      const pieceHTML = `<div style="position: absolute; top: ${top}px; left: ${left}px;">
+                <img src="${pieceImage}" alt="${pieceAlt}" style="width: 50px; height: 50px;">
+              </div>`;
+      myWindow.document.body.innerHTML += pieceHTML;
+
+      // Update the position for the next piece in the same row
+      left += gridSpacing;
+
+      // After a certain number of pieces in a row, move to the next row
+      if (i % 5 === 4) {
+        top += gridSpacing;
+        left = 0;
+      }
+    }
+  });
+}
+
+// Helper function to get the quantity of a selected game piece based on its alt text
+function getPieceQuantity(pieceAlt) {
+  const quantityInput = document.querySelector(
+    `.selected-pieces-table tr[data-piece="${pieceAlt}"] input.quantity-slider`
+  );
+  if (quantityInput) {
+    return parseInt(quantityInput.value, 10);
+  }
+  return 0; // Default to 0 if not found
 }
 
 function selectBoard(boardNumber) {
