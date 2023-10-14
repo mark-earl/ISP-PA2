@@ -1,10 +1,11 @@
-body, h1 {
+body,
+h1 {
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color:navajowhite;
+    background-color: navajowhite;
     font-family: Arial, sans-serif;
     text-align: center;
 }
@@ -18,32 +19,12 @@ nav {
     padding: 10px 20px;
 }
 
-button {
-    transition: background-color 0.3s;
-}
-
-.openButton, .closeButton {
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 15%;
-    margin-left: 10px;
-}
-.openButton {
-    background-color: green;
-}
-.closeButton {
-    background-color: red;
-}
-
-button:hover {
-    background-color: navajowhite;
-}
-
 .title {
     flex-grow: 1;
     font-size: 40px;
 }
 
+/* Game Board Styling */
 .board-tiles {
     width: 80%;
     margin: 0 auto;
@@ -68,26 +49,25 @@ button:hover {
     align-items: center;
 }
 
-
 .board-tile img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
 
-
 .board-tile.clicked {
     border-color: limegreen;
     border-radius: 25%;
 }
 
+/* Game Pieces Styling */
 .game-pieces-selection {
     padding: 20px;
 }
 
 .game-pieces {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(7, auto);
     grid-gap: 10px;
 }
 
@@ -103,6 +83,8 @@ button:hover {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin: auto;
+    text-align: center;
 }
 
 .game-piece-tile img {
@@ -115,4 +97,53 @@ button:hover {
 .game-piece-tile.clicked {
     border-color: limegreen;
     border-radius: 25%;
+}
+
+.selected-pieces-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 2px solid #000;
+    margin-top: 20px;
+}
+
+.selected-pieces-table th,
+.selected-pieces-table td {
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+.selected-pieces-table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.selected-pieces-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.selected-pieces-table tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+.piece-image-small {
+    width: 40px;
+    height: 40px;
+}
+
+.openWin {
+    width: 30%;
+    margin: 30px;
+    background-color: navajowhite;
+    color: black;
+    padding: 15px 30px;
+    font-size: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, width 0.5s;
+}
+
+.openWin:hover {
+    background-color: limegreen;
+    width: 50%;
 }

@@ -20,16 +20,16 @@
         <h2 style="font-size:30px;">1. Select a Game Board</h2>
         <div class="board-tiles">
             <div class="board-tile" onclick="selectBoard(1)">
-                <img src="./Assets/board1.png" alt="Game Board 1">
+                <img src="./Assets/Boards/board1.png" alt="Game Board 1">
             </div>
             <div class="board-tile" onclick="selectBoard(2)">
-                <img src="./Assets/board2.png" alt=" Game Board 2">
+                <img src="./Assets/Boards/board2.png" alt=" Game Board 2">
             </div>
             <div class="board-tile" onclick="selectBoard(3)">
-                <img src="./Assets/board3.png" alt="Game Board 3">
+                <img src="./Assets/Boards/board3.png" alt="Game Board 3">
             </div>
             <div class="board-tile" onclick="selectBoard(4)">
-                <img src="./Assets/board4.png" alt="Game Board 4">
+                <img src="./Assets/Boards/board4.png" alt="Game Board 4">
             </div>
         </div>
     </div>
@@ -38,46 +38,68 @@
     <div class="game-pieces-selection">
         <h2 style="font-size: 30px;">2. Select Your Game Pieces</h2>
         <div class="game-pieces">
-            <!-- Create a grid of 20 game piece tiles -->
+            <!-- Create a grid of 14 game piece tiles -->
             <div class="game-piece-tile" onclick="selectPiece(1)">
-                <img src="./Assets/checker.png" alt="Game Piece 1">
+                <img src="./Assets/Pieces/w_bishop.png" alt="Game Piece 1">
             </div>
             <div class="game-piece-tile" onclick="selectPiece(2)">
-                <img src="./Assets/checker.png" alt="Game Piece 2">
+                <img src="./Assets/Pieces/w_king.png" alt="Game Piece 2">
             </div>
             <div class="game-piece-tile" onclick="selectPiece(3)">
-                <img src="./Assets/checker.png" alt="Game Piece 3">
+                <img src="./Assets/Pieces/w_knight.png" alt="Game Piece 3">
             </div>
             <div class="game-piece-tile" onclick="selectPiece(4)">
-                <img src="./Assets/checker.png" alt="Game Piece 4">
+                <img src="./Assets/Pieces/w_pawn.png" alt="Game Piece 4">
             </div>
             <div class="game-piece-tile" onclick="selectPiece(5)">
-                <img src="./Assets/checker.png" alt="Game Piece 5">
+                <img src="./Assets/Pieces/w_queen.png" alt="Game Piece 5">
             </div>
             <div class="game-piece-tile" onclick="selectPiece(6)">
-                <img src="./Assets/checker.png" alt="Game Piece 6">
+                <img src="./Assets/Pieces/w_rook.png" alt="Game Piece 6">
             </div>
             <div class="game-piece-tile" onclick="selectPiece(7)">
-                <img src="./Assets/checker.png" alt="Game Piece 7">
+                <img src="./Assets/Pieces/b_bishop.png" alt="Game Piece 7">
             </div>
             <div class="game-piece-tile" onclick="selectPiece(8)">
-                <img src="./Assets/checker.png" alt="Game Piece 8">
+                <img src="./Assets/Pieces/b_king.png" alt="Game Piece 8">
             </div>
             <div class="game-piece-tile" onclick="selectPiece(9)">
-                <img src="./Assets/checker.png" alt="Game Piece 9">
+                <img src="./Assets/Pieces/b_knight.png" alt="Game Piece 9">
             </div>
             <div class="game-piece-tile" onclick="selectPiece(10)">
-                <img src="./Assets/checker.png" alt="Game Piece 10">
+                <img src="./Assets/Pieces/b_pawn.png" alt="Game Piece 10">
             </div>
-            <!-- Repeat the above div for all 20 game pieces -->
+            <div class="game-piece-tile" onclick="selectPiece(11)">
+                <img src="./Assets/Pieces/b_queen.png" alt="Game Piece 11">
+            </div>
+            <div class="game-piece-tile" onclick="selectPiece(12)">
+                <img src="./Assets/Pieces/b_rook.png" alt="Game Piece 12">
+            </div>
+            <div class="game-piece-tile" onclick="selectPiece(13)">
+                <img src="./Assets/Pieces/b_checker.png" alt="Game Piece 13">
+            </div>
+            <div class="game-piece-tile" onclick="selectPiece(14)">
+                <img src="./Assets/Pieces/w_checker.png" alt="Game Piece 14">
+            </div>
         </div>
     </div>
 
-    <button class="openButton" onclick="openWin()">Open</button>
-    <button class="closeButton" onclick="closeWindow()">Close</button>
+    <div class="game-piece-numbers">
+        <h2 style="font-size: 30px;">3. Choose How Many Pieces You Want</h2>
+        <table class="selected-pieces-table">
+            <thead>
+                <tr>
+                    <th>Piece</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be added dynamically here -->
+            </tbody>
+        </table>
+    </div>
 
-    </div>
-    </div>
+    <button class="openWin" onclick="openWin()">Create Your Game!</button>
 
     <script src="script.js"></script>
 </body>
