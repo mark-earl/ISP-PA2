@@ -147,3 +147,10 @@ nav {
     background-color: limegreen;
     width: 50%;
 }
+
+.bgColorPicker {
+    width: 30%;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+}

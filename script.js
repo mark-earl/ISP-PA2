@@ -7,6 +7,13 @@ function openWin(selectedBoardNumber) {
   const windowSize = 800; // Adjust this value as needed
   myWindow = window.open("", "", `width=${windowSize},height=${windowSize}`);
 
+  // Get the selected background color from the color picker input
+  const bgColorPicker = document.getElementById("bgColorPicker");
+  const selectedBgColor = bgColorPicker.value;
+
+  // Apply the selected background color to the opened window
+  myWindow.document.body.style.backgroundColor = selectedBgColor;
+
   // Set the background image based on the selected board number
   const selectedBoardImage = document.querySelector(
     `.board-tile:nth-child(${selectedBoardNumber}) img`
