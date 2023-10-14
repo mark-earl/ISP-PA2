@@ -1,10 +1,36 @@
-var page = "<p>ISP</p>";
+var page = "<p></p>";
 var myWindow = null;
 
-function openWin() {
+function openWin(selectedBoardNumber) {
   if (myWindow != null) myWindow.close();
-  myWindow = window.open("", "TITLE", "width=800,height=168");
-  myWindow.document.write(page);
+
+  const windowSize = 800; // Adjust this value as needed
+  myWindow = window.open("", "", `width=${windowSize},height=${windowSize}`);
+
+  // Set the background image based on the selected board number
+  const selectedBoardImage = document.querySelector(
+    `.board-tile:nth-child(${selectedBoardNumber}) img`
+  ).src;
+  myWindow.document.body.style.backgroundImage = `url(${selectedBoardImage})`;
+  myWindow.document.body.style.backgroundSize = "cover";
+  myWindow.document.body.style.backgroundRepeat = "no-repeat";
+  myWindow.document.body.style.backgroundPosition = "center";
+
+  // Generate the HTML for selected game pieces and insert it into the opened window
+  const selectedPieces = document.querySelectorAll(".game-piece-tile.clicked");
+  const pieceHTML = Array.from(selectedPieces)
+    .map((piece, index) => {
+      return `<div style="position: absolute; top: ${100 * index}px; left: ${
+        100 * index
+      }px;">
+                <img src="${piece.querySelector("img").src}" alt="${
+        piece.querySelector("img").alt
+      }" style="width: 50px; height: 50px;"> <!-- Set the desired width and height -->
+              </div>`;
+    })
+    .join("");
+
+  myWindow.document.body.innerHTML += pieceHTML;
 }
 
 function selectBoard(boardNumber) {
@@ -93,4 +119,14 @@ function selectPiece(pieceNumber) {
 function updateQuantity(slider, pieceName) {
   const quantityValue = slider.nextElementSibling;
   quantityValue.textContent = slider.value;
+}
+
+function getSelectedBoardNumber() {
+  const boardTiles = document.querySelectorAll(".board-tile");
+  for (let i = 0; i < boardTiles.length; i++) {
+    if (boardTiles[i].classList.contains("clicked")) {
+      return i + 1; // Add 1 because the index is 0-based
+    }
+  }
+  return 1; // Default to the first board if none is selected
 }
