@@ -155,7 +155,7 @@ nav {
     width: 50%;
 }
 
-.bgColorPicker {
+#bgColorPicker {
     width: 30%;
     height: 50px;
     border: none;
@@ -163,7 +163,7 @@ nav {
     transition: filter 0.5s;
 }
 
-.bgColorPicker:hover {
+#bgColorPicker:hover {
     cursor: pointer;
     size: 110%;
     filter: brightness(70%);
