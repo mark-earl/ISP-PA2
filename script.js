@@ -16,11 +16,33 @@ function openWin(selectedBoardNumber) {
   myWindow.document.body.style.backgroundRepeat = "no-repeat";
   myWindow.document.body.style.backgroundPosition = "center";
 
+  // Add a centered header at the bottom
+  // Create a container for the header
+  const headerContainer = myWindow.document.createElement("div");
+  headerContainer.style.position = "absolute";
+  headerContainer.style.bottom = "10px";
+  headerContainer.style.left = "50%";
+  headerContainer.style.transform = "translateX(-50%)";
+  headerContainer.style.backgroundColor = "rgba(255, 255, 255, 1)";
+  headerContainer.style.padding = "10px";
+  headerContainer.style.borderRadius = "5px";
+  headerContainer.style.border = "solid black";
+
+  // Add a header inside the container
+  const header = myWindow.document.createElement("h1");
+  header.textContent = "Move Your Pieces Around!";
+
+  // Append the header to the container
+  headerContainer.appendChild(header);
+
+  // Append the container to the opened window's body
+  myWindow.document.body.appendChild(headerContainer);
+
   // Generate the HTML for selected game pieces in a grid layout and insert it into the opened window
   const selectedPieces = document.querySelectorAll(".game-piece-tile.clicked");
   let top = 0;
   let left = 0;
-  const gridSpacing = 100; // Adjust the spacing between pieces
+  const gridSpacing = 50; // Adjust the spacing between pieces
 
   selectedPieces.forEach((piece) => {
     const pieceImage = piece.querySelector("img").src;
@@ -28,9 +50,9 @@ function openWin(selectedBoardNumber) {
     const quantity = getPieceQuantity(pieceAlt); // Get the quantity from the slider
 
     for (let i = 0; i < quantity; i++) {
-      const pieceHTML = `<div style="position: absolute; top: ${top}px; left: ${left}px;">
+      const pieceHTML = `<span onmousedown="grabber(event);" style="position: absolute; top: ${top}px; left: ${left}px;">
                 <img src="${pieceImage}" alt="${pieceAlt}" style="width: 50px; height: 50px;">
-              </div>`;
+              </span>`;
       myWindow.document.body.innerHTML += pieceHTML;
 
       // Update the position for the next piece in the same row
@@ -43,6 +65,49 @@ function openWin(selectedBoardNumber) {
       }
     }
   });
+
+  // Include the JavaScript code from dragNDrop.js within the opened window's script tag
+  const scriptBlock = myWindow.document.createElement("script");
+  scriptBlock.type = "text/javascript";
+  scriptBlock.innerHTML = `
+
+  var diffX, diffY, theElement;
+
+  function grabber(event) {
+
+    theElement = event.currentTarget;
+
+    var posX = parseInt(theElement.style.left);
+    var posY = parseInt(theElement.style.top);
+
+    diffX = event.clientX - posX;
+    diffY = event.clientY - posY;
+
+    document.addEventListener("mousemove", mover, true);
+    document.addEventListener("mouseup", dropper, true);
+
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  function mover(event) {
+
+    theElement.style.left = event.clientX - diffX + "px";
+    theElement.style.top = event.clientY - diffY + "px";
+
+    event.stopPropagation();
+  }
+
+  function dropper(event) {
+
+    document.removeEventListener("mouseup", dropper, true);
+    document.removeEventListener("mousemove", mover, true);
+
+    event.stopPropagation();
+  }
+    `;
+
+  myWindow.document.head.appendChild(scriptBlock);
 }
 
 // Helper function to get the quantity of a selected game piece based on its alt text
