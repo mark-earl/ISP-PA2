@@ -8,7 +8,7 @@ function openWin(selectedBoardNumber) {
   myWindow = window.open("", "", `width=${windowSize},height=${windowSize}`);
 
   // Get the selected background color from the color picker input
-  const bgColorPicker = document.getElementById("bgColorPicker");
+  const bgColorPicker = document.getElementsByClassName("bgColorPicker");
   const selectedBgColor = bgColorPicker.value;
 
   // Apply the selected background color to the opened window

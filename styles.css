@@ -49,6 +49,10 @@ nav {
     align-items: center;
 }
 
+.board-tile:hover {
+    border-color: limegreen
+}
+
 .board-tile img {
     max-width: 100%;
     max-height: 100%;
@@ -93,6 +97,9 @@ nav {
     object-fit: contain;
 }
 
+.game-piece-tile:hover {
+    border-color: limegreen
+}
 
 .game-piece-tile.clicked {
     border-color: limegreen;
@@ -153,4 +160,11 @@ nav {
     height: 50px;
     border: none;
     border-radius: 5px;
+    transition: filter 0.5s;
+}
+
+.bgColorPicker:hover {
+    cursor: pointer;
+    size: 110%;
+    filter: brightness(70%);
 }
